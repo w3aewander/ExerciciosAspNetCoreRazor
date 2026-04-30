@@ -34,13 +34,14 @@ Este repositório serve como um portfólio de aprendizado, contendo a implementa
 
 O projeto está organizado de forma a facilitar a navegação pelos exercícios:
 
-
+```text
 ├── ExerciciosAspNetCoreRazor/
 │   ├── Pages/              # Páginas .cshtml e seus respectivos Modelos (.cshtml.cs)
 │   ├── wwwroot/            # Arquivos estáticos (CSS, JS, Imagens)
 │   ├── Program.cs          # Configurações de inicialização do App
 │   └── appsettings.json    # Configurações de ambiente
 `
+```
 
 ## 🚀 Como Executar o Projeto
 
