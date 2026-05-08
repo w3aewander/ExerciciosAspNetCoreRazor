@@ -1,57 +1,28 @@
 ﻿@page
-@model IndexModel
+@model MinhaAppSqlite.Pages.IndexModel
+@{
+    ViewData["Title"] = "Página Inicial";
+}
 
-<div class="container">
-    <h1>Lista de Produtos</h1>
+<h1>Bem-vindo a Minha Página Inicial</h1>
 
-    <div class="container my-2 p-2">
-        <a asp-page="Create" class="btn btn-success">Novo</a>
-    </div>
+<h2>Módulos da Aplicação </h2>
 
-    @if (Model.Produtos.Any())
-    {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Preço</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var produto in Model.Produtos)
-                {
-                    <tr>
-                        <td>@produto.Id</td>
-                        <td>@produto.Nome</td>
-                        <td>@produto.Preco.ToString("C")</td>
-                        
-                        <td class="text-center">
-                            <a asp-page="Edit"
-                                   asp-route-id="@produto.Id"
-                                   class="btn btn-sm btn-warning">
-                                Editar
-                            </a>
-
-                            
-                            <a asp-page="Delete"
-                                   asp-route-id="@produto.Id"
-                                   class="btn btn-sm btn-danger">
-                                Excluir
-                            </a>
-
-                        </td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <div class="alert alert-info">
-            Nenhum produto cadastrado.
-        </div>
-    }
+<div class="container mt-4 bordered border-1">
+    <ul class="list-group">
+        <li class="btn btn-primary list-group-item">Clientes</li>
+        <li class="btn btn-primary list-group-item">
+            <a asp-page="/Produto/Index">Produtos</a>
+        </li>
+        <li class="btn btn-primary list-group-item">Vendas</li>
+    </ul>
 </div>
+
+<div class="m-4 p-3">
+
+    <h2>Minha cor preferida</h2>
+
+    <div class="color-pink">Rosinha Profunda</div>
+
+</div>
+

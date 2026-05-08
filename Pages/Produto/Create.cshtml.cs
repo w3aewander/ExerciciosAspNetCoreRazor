@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MinhaAppSqlite.Models;
 using MinhaAppSqlite.Data;
 
-namespace MinhaAppSqlite.Pages
+
+namespace MinhaAppSqlite.Pages.Produto
 {
     public class CreateModel(AppDbContext context) : PageModel
     {
@@ -11,7 +11,7 @@ namespace MinhaAppSqlite.Pages
 
         // Property to bind the Product model to the form
         [BindProperty]
-        public Produto Produto { get; set; }
+        public Models.Produto Produto { get; set; }
 
 
 
