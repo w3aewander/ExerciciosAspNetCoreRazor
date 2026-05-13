@@ -1,27 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MinhaAppSqlite.Data;
+using MinhaAppSqlite.Models;
 
-namespace MinhaAppSqlite.Pages.Cliente
+namespace MinhaAppSqlite.Pages_Cliente
 {
-   
-        public class IndexModel : PageModel
+    public class IndexModel : PageModel
+    {
+        private readonly MinhaAppSqlite.Data.AppDbContext _context;
+
+        public IndexModel(MinhaAppSqlite.Data.AppDbContext context)
         {
-            private readonly AppDbContext _context;
-
-            public IndexModel(AppDbContext context)
-            {
-                _context = context;
-            }
-
-            public IList<Models.Cliente> Clientes { get; set; } = new List<Models.Cliente>();
-
-            public async Task OnGetAsync()
-            {
-                Clientes = await _context.Clientes
-                    .OrderBy(c => c.Nome)
-                    .ToListAsync();
-            }
+            _context = context;
         }
 
+        public IList<Cliente> Cliente { get;set; } = default!;
+
+        public async Task OnGetAsync()
+        {
+            Cliente = await _context.Clientes.ToListAsync();
+        }
+    }
 }

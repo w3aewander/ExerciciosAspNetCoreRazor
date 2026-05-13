@@ -1,59 +1,50 @@
-﻿@page
-@model MinhaAppSqlite.Pages.Cliente.IndexModel
+@page
+@model MinhaAppSqlite.Pages_Cliente.IndexModel
+
 @{
-    ViewData["Title"] = "Cadastro de Clientes";
+    Layout = null;
 }
 
-<div class="container">
+<!DOCTYPE html>
 
-    <h1>Cadastro de Clientes</h1>
-    <div class="container my-2 p-2" style="background: #aabb11">
-        <a asp-page="Create" class="btn btn-success">Novo</a>
-        <a asp-page="/Index" class="btn btn-secondary">Inicio</a>
-    </div>
-
-    @if (Model.Clientes.Any())
-    {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var cliente in Model.Clientes)
-                {
-                    <tr>
-                        <td>@cliente.Id</td>
-                        <td>@cliente.Nome</td>
-                        
-                        <td class="text-center">
-                            <a asp-page="Edit"
-                                   asp-route-id="@cliente.Id"
-                                   class="btn btn-sm btn-warning">
-                                Editar
-                            </a>
-
-                            
-                            <a asp-page="Delete"
-                                   asp-route-id="@cliente.Id"
-                                   class="btn btn-sm btn-danger">
-                                Excluir
-                            </a>
-
-                        </td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <div class="alert alert-info">
-            Nenhum cliente cadastrado.
-        </div>
-    }
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cliente) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
